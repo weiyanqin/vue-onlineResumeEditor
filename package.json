@@ -1,0 +1,20 @@
+{
+  "name": "vue-onlineResumeEditor",
+  "version": "1.0.0",
+  "description": "Oneline-Resume-Editor",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/weiyanqin/vue-onlineResumeEditor.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "",
+  "bugs": {
+    "url": "https://github.com/weiyanqin/vue-onlineResumeEditor/issues"
+  },
+  "homepage": "https://github.com/weiyanqin/vue-onlineResumeEditor#readme"
+}

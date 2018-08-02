@@ -1,28 +1,49 @@
 <template>
   <div id="app">
-    <Topbar/>
-    <Editor/>
-    <Preview/>
+    <Topbar class="topbar"/>
+    <main>
+      <Editor class="editor"/>
+      <Preview class="preview"/>
+    </main>
+    
   </div>
 </template>
 
 <script>
-
-import Topbar from './components/Topbar'
-import Editor from './components/Editor'
-import Preview from './components/Preview'
+import Topbar from "./components/Topbar";
+import Editor from "./components/Editor";
+import Preview from "./components/Preview";
 
 export default {
   name: "App",
   components: {
-    Topbar,Editor,Preview
+    Topbar,
+    Editor,
+    Preview
   }
 };
 </script>
 
-<style>
+<style lang="scss">
 #app {
   font-family: "Avenir", Helvetica, Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.topbar {
   
+}
+
+main {
+  display: flex;
+  flex: 1;
+  > .editor {
+    width: 20em;
+  }
+  > .preview {
+    flex: 1;
+  }
 }
 </style>

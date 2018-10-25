@@ -2,8 +2,8 @@
     <div id="editor">
         <nav>
             <ol>
-                <li v-for="i in [0,1,2,3,4,5]" v-bind:class="{active: currentTab === i}" v:on:click="currentTab = i">
-                    <svg class="icon" aria-hidden="">
+                <li v-for="i in [0,1,2,3,4,5,]" v-bind:class="{active:currentTab === i}" v-on:click="currentTab = i">
+                    <svg class="icon">
                         <use v-bind:xlink:href="`#icon-${icons[i]}`"></use>
                     </svg>
                 </li>
@@ -43,13 +43,29 @@
             </ol> -->
 
         </nav>
+
         <ol class="panes">
-            <li v-bind:class="{active: currentTab === 0}">tab1</li>
-            <li v-bind:class="{active: currentTab === 0}">tab2</li>
-            <li v-bind:class="{active: currentTab === 0}">tab3</li>
-            <li v-bind:class="{active: currentTab === 0}">tab4</li>
-            <li v-bind:class="{active: currentTab === 0}">tab5</li>
-            <li v-bind:class="{active: currentTab === 0}">tab6</li>
+          <!-- <li v-for="i in [0,1,2,3,4,5]" v-bind:class="{active: currentTab === i}"> Tab {{i}} </li> -->
+
+          <li v-bind:class="{active: currentTab === 0}">
+            <h2>个人信息</h2>
+            <el-form>
+                <el-form-item label="姓名">
+                  <el-input v-model="profile.name"></el-input>
+                </el-form-item>
+                <el-form-item label="城市">
+                  <el-input v-model="profile.city"></el-input>
+                </el-form-item>
+                <el-form-item label="出生年月">
+                  <el-input v-model="profile.birth"></el-input>
+                </el-form-item>
+          </el-form>
+          </li>
+          <li v-bind:class="{active: currentTab === 1}">工作经历</li>
+          <li v-bind:class="{active: currentTab === 2}">学习经历</li>
+          <li v-bind:class="{active: currentTab === 3}">项目经历</li>
+          <li v-bind:class="{active: currentTab === 4}">获奖情况</li>
+          <li v-bind:class="{active: currentTab === 5}">联系方式</li>
         </ol>
     </div>
 </template>
@@ -58,9 +74,16 @@
 export default {
   data() {
     return {
-      currentTab: 0
-    };
-  }
+      currentTab: 0,
+      icons: ["shenfenzheng", "iconset0190", "shu", "shoucang", "jiangbei", "weibiaoti-"],
+      profile:{
+        name:'',
+        city:'',
+        birth:'',
+      }
+    }
+  },
+
 };
 </script>
 
@@ -72,6 +95,7 @@ export default {
     background: #000;
     width: 80px;
     > ol > li {
+      list-style-type: none;
       border: 1px solid red;
       padding: 16px 0;
       text-align: center;
@@ -91,6 +115,7 @@ export default {
   > .panes {
     > li {
       display: none;
+      padding: 32px;
       &.active {
         display: block;
       }

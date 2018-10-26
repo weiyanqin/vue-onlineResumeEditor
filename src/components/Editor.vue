@@ -59,9 +59,24 @@
                 <el-form-item label="出生年月">
                   <el-input v-model="profile.birth"></el-input>
                 </el-form-item>
-          </el-form>
+            </el-form>
           </li>
-          <li v-bind:class="{active: currentTab === 1}">工作经历</li>
+          <li v-bind:class="{active: currentTab === 1}">
+            <h2>工作经历</h2>
+             <el-form>
+                <div class="container" v-for="(work, index) in workHistory">
+                    <el-form-item label="公司">
+                      <el-input v-model="work.company"></el-input>
+                    </el-form-item>
+                    <el-form-item label="工作内容">
+                      <el-input v-model="work.content"></el-input>
+                    </el-form-item>
+                    <i class="el-icon-remove" v-on:click="removeWorkHistory(index)"></i>
+                    <hr>
+                </div>
+                <el-button type="primary" v-on:click="addWorkHistory">添加按钮</el-button>
+            </el-form>           
+          </li>
           <li v-bind:class="{active: currentTab === 2}">学习经历</li>
           <li v-bind:class="{active: currentTab === 3}">项目经历</li>
           <li v-bind:class="{active: currentTab === 4}">获奖情况</li>
@@ -75,15 +90,20 @@ export default {
   data() {
     return {
       currentTab: 0,
-      icons: ["shenfenzheng", "iconset0190", "shu", "shoucang", "jiangbei", "weibiaoti-"],
-      profile:{
-        name:'',
-        city:'',
-        birth:'',
-      }
+      icons: [ "shenfenzheng", "iconset0190", "shu", "shoucang", "jiangbei", "weibiaoti-" ],
+      profile: { name: "", city: "", birth: "" },
+      workHistory: [{ company: "", content: "" }]
+    };
+  },
+  methods:{
+    addWorkHistory(){
+      this.workHistory.push({conpany:'', content:''})
+    },
+    removeWorkHistory(index){
+      this.workHistory.splice(index,1)
     }
   },
-
+  created(){}
 };
 </script>
 
@@ -113,9 +133,19 @@ export default {
     }
   }
   > .panes {
+    flex:1;
+    .container{
+      position: relative;
+      .el-icon-remove{
+        position: absolute;
+        right: 0; top: 0;
+      }
+    }
     > li {
       display: none;
       padding: 32px;
+      height:100%;
+      overflow: auto;
       &.active {
         display: block;
       }

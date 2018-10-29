@@ -48,18 +48,7 @@
           <!-- <li v-for="i in [0,1,2,3,4,5]" v-bind:class="{active: currentTab === i}"> Tab {{i}} </li> -->
 
           <li v-bind:class="{active: currentTab === 0}">
-            <h2>个人信息</h2>
-            <el-form>
-                <el-form-item label="姓名">
-                  <el-input v-model="profile.name"></el-input>
-                </el-form-item>
-                <el-form-item label="城市">
-                  <el-input v-model="profile.city"></el-input>
-                </el-form-item>
-                <el-form-item label="出生年月">
-                  <el-input v-model="profile.birth"></el-input>
-                </el-form-item>
-            </el-form>
+            <ProfileEditor v-bind:profile="workHistory"/>
           </li>
           <li v-bind:class="{active: currentTab === 1}">
             <WorkHistoryEditor v-bind:workHistory="workHistory"/>
@@ -73,9 +62,10 @@
 </template>
 
 <script>
+import ProfileEditor from './ProfileEditor'
 import WorkHistoryEditor from './WorkHistoryEditor'
 export default {
-  components: {WorkHistoryEditor},
+  components: {ProfileEditor, WorkHistoryEditor},
   data() {
     return {
       currentTab: 0,

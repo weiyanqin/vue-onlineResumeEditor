@@ -46,14 +46,15 @@
 
         <ol class="panes">
           <!-- <li v-for="i in [0,1,2,3,4,5]" v-bind:class="{active: currentTab === i}"> Tab {{i}} </li> -->
-
           <li v-bind:class="{active: currentTab === 0}">
-            <ProfileEditor v-bind:profile="workHistory"/>
+            <ProfileEditor v-bind:profile="profile"/>
           </li>
           <li v-bind:class="{active: currentTab === 1}">
             <WorkHistoryEditor v-bind:workHistory="workHistory"/>
           </li>
-          <li v-bind:class="{active: currentTab === 2}">学习经历</li>
+          <li v-bind:class="{active: currentTab === 2}">
+            <StudyHistoryEditor v-bind:items="items"/>
+          </li>
           <li v-bind:class="{active: currentTab === 3}">项目经历</li>
           <li v-bind:class="{active: currentTab === 4}">获奖情况</li>
           <li v-bind:class="{active: currentTab === 5}">联系方式</li>
@@ -64,14 +65,16 @@
 <script>
 import ProfileEditor from './ProfileEditor'
 import WorkHistoryEditor from './WorkHistoryEditor'
+import StudyHistoryEditor from './StudyHistoryEditor'
 export default {
-  components: {ProfileEditor, WorkHistoryEditor},
+  components: {ProfileEditor, WorkHistoryEditor, StudyHistoryEditor},
   data() {
     return {
       currentTab: 0,
       icons: [ "shenfenzheng", "iconset0190", "shu", "shoucang", "jiangbei", "weibiaoti-" ],
       profile: { name: "", city: "", birth: "" },
-      workHistory: [{ company: "", content: "" }]
+      workHistory: [{ company: "", content: "" }],
+      items: [{ school: "", duration: "", degree: "" }]
     };
   },
   methods:{},

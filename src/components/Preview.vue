@@ -11,6 +11,15 @@
                 </li>
             </ul>
         </section>
+        <section v-if="filter(resume.workHistory).length > 0">
+            <h2>工作经历</h2>
+            <ul>
+                <li v-for="work in filter(resume.workHistory)">
+                    {{ work.company }}
+                    {{ work.content }}
+                </li>
+            </ul>
+        </section>
     </div>
 
 </template>

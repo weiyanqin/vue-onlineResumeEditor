@@ -61,7 +61,23 @@
           <li v-bind:class="{active: currentTab === 4}">
             <ArrayEditor v-bind:items="awards" title="获奖情况" v-bind:labels="{name: '获奖详情'}"/>
           </li>
-          <li v-bind:class="{active: currentTab === 5}">联系方式</li>
+          <li v-bind:class="{active: currentTab === 5}">
+            <h2>联系方式</h2>
+            <el-form>
+                <el-form-item label="QQ">
+                    <el-input v-model="contacts.qq"></el-input>
+                </el-form-item>
+                <el-form-item label="微信">
+                    <el-input v-model="contacts.wechat"></el-input>
+                </el-form-item>
+                <el-form-item label="邮箱">
+                    <el-input v-model="contacts.email"></el-input>
+                </el-form-item>
+                <el-form-item label="手机">
+                    <el-input v-model="contacts.phone"></el-input>
+                </el-form-item>
+            </el-form>
+          </li>
         </ol>
     </div>
 </template>
@@ -86,7 +102,8 @@ export default {
       workHistory: [{ company: "", content: "" }],
       studyHistory: [{ school: "", duration: "", degree: "" }],
       projects: [{ name: "", content: "" }],
-      awards: [{ name: '' }]
+      awards: [{ name: '' }],
+      contacts: {qq: '', wechat: '', phone: '', email: ''}
     };
   },
   methods: {},

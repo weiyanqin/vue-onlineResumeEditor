@@ -2,8 +2,8 @@
   <div id="app">
     <Topbar class="topbar"/>
     <main>
-      <Editor class="editor"/>
-      <Preview class="preview"/>
+      <Editor v-bind:resume="resume" class="editor"/>
+      <Preview v-bind:resume="resume" class="preview"/>
     </main>
     
   </div>
@@ -15,6 +15,18 @@ import Editor from "./components/Editor";
 import Preview from "./components/Preview";
 
 export default {
+  data() {
+    return {
+      resume: {
+        profile: { name: "", city: "", birth: "" },
+        workHistory: [{ company: "", content: "" }],
+        studyHistory: [{ school: "", duration: "", degree: "" }],
+        projects: [{ name: "", content: "" }],
+        awards: [{ name: "" }],
+        contacts: { qq: "", wechat: "", phone: "", email: "" }
+      }
+    };
+  },
   name: "App",
   components: {
     Topbar,
@@ -25,8 +37,10 @@ export default {
 </script>
 
 <style lang="scss">
-html, body, #app{
-  height:100%;
+html,
+body,
+#app {
+  height: 100%;
   overflow: hidden;
 }
 #app {
@@ -37,13 +51,14 @@ html, body, #app{
 }
 
 .topbar {
-  box-shadow:  0 0 3px hsla(0,0,0,0.5); 
+  box-shadow: 0 0 3px hsla(0, 0, 0, 0.5);
   position: relative;
   z-index: 1;
 }
 
 .icon {
-  width: 1em; height: 1em;
+  width: 1em;
+  height: 1em;
   vertical-align: -0.15em;
   fill: currentColor;
   overflow: hidden;
@@ -52,12 +67,12 @@ html, body, #app{
 main {
   display: flex;
   flex: 1;
-  background: #DDD;
+  background: #ddd;
   > .editor {
-    width: 40em;    
+    width: 40em;
     margin: 16px 8px 16px 16px;
-    background:   white;
-    box-shadow:  0 0 3px hsla(0,0,0,0.5); 
+    background: white;
+    box-shadow: 0 0 3px hsla(0, 0, 0, 0.5);
     border-radius: 4px;
     overflow: auto;
   }
@@ -65,7 +80,7 @@ main {
     flex: 1;
     margin: 16px 16px 16px 8px;
     background: white;
-    box-shadow:  0 0 3px hsla(0,0,0,0.5); 
+    box-shadow: 0 0 3px hsla(0, 0, 0, 0.5);
     border-radius: 4px;
   }
 }

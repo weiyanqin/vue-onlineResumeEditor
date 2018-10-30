@@ -50,13 +50,13 @@
             <ProfileEditor v-bind:profile="profile"/>
           </li>
           <li v-bind:class="{active: currentTab === 1}">
-            <ArrayEditor v-bind:items="workHistory" v-bind:labels="{company: '公司', content: '工作内容'}"/>
+            <ArrayEditor v-bind:items="workHistory" v-bind:labels="{company: '公司', content: '工作内容'}" title="工作经历"/>
           </li>
           <li v-bind:class="{active: currentTab === 2}">
-            <ArrayEditor v-bind:items="studyHistory" v-bind:labels="{school: '学习', duration: '时间', degree: '学位'}"/>
+            <ArrayEditor v-bind:items="studyHistory" v-bind:labels="{school: '学习', duration: '时间', degree: '学位'}" title="学习经历"/>
           </li>
           <li v-bind:class="{active: currentTab === 3}">
-
+            <ArrayEditor v-bind:items="projects" v-bind:labels="{name: '项目名称', content: '工作内容'}" title="项目经历"/>
           </li>
           <li v-bind:class="{active: currentTab === 4}">获奖情况</li>
           <li v-bind:class="{active: currentTab === 5}">联系方式</li>
@@ -65,22 +65,29 @@
 </template>
 
 <script>
-import ProfileEditor from './ProfileEditor'
-import ArrayEditor from './ArrayEditor'
+import ProfileEditor from "./ProfileEditor";
+import ArrayEditor from "./ArrayEditor";
 export default {
-  components: {ProfileEditor, ArrayEditor},
+  components: { ProfileEditor, ArrayEditor },
   data() {
     return {
       currentTab: 0,
-      icons: [ "shenfenzheng", "iconset0190", "shu", "shoucang", "jiangbei", "weibiaoti-" ],
+      icons: [
+        "shenfenzheng",
+        "iconset0190",
+        "shu",
+        "shoucang",
+        "jiangbei",
+        "weibiaoti-"
+      ],
       profile: { name: "", city: "", birth: "" },
       workHistory: [{ company: "", content: "" }],
       studyHistory: [{ school: "", duration: "", degree: "" }],
-      projects: [{ name: "", content: ""}]
+      projects: [{ name: "", content: "" }]
     };
   },
-  methods:{},
-  created(){}
+  methods: {},
+  created() {}
 };
 </script>
 
@@ -110,18 +117,19 @@ export default {
     }
   }
   > .panes {
-    flex:1;
-    .container{
+    flex: 1;
+    .container {
       position: relative;
-      .el-icon-remove{
+      .el-icon-remove {
         position: absolute;
-        right: 0; top: 0;
+        right: 0;
+        top: 0;
       }
     }
     > li {
       display: none;
       padding: 32px;
-      height:100%;
+      height: 100%;
       overflow: auto;
       &.active {
         display: block;

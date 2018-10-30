@@ -5,7 +5,7 @@
       <Editor v-bind:resume="resume" class="editor"/>
       <Preview v-bind:resume="resume" class="preview"/>
     </main>
-    
+    <el-button id="exitPreview" v-on:click="exitPreview">退出预览</el-button>
   </div>
 </template>
 
@@ -29,6 +29,9 @@ export default {
     };
   },
   methods: {
+    exitPreview(){
+      this.previewMode = false
+    },
     preview(){
       this.previewMode = true
     }
@@ -98,5 +101,14 @@ main {
 .previewMode > #preview{
   max-width: 800px;
   margin: 32px auto;
+}
+#exitPreview{
+  display: none;
+}
+.previewMode #exitPreview{
+  display: inline-block;
+  position: fixed;
+  right: 16px;
+  bottom: 16px;
 }
 </style>

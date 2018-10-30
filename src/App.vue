@@ -1,6 +1,6 @@
 <template>
-  <div id="app">
-    <Topbar class="topbar"/>
+  <div id="app" v-bind:class="{previewMode: previewMode}">
+    <Topbar class="topbar" v-on:preview="preview"/>
     <main>
       <Editor v-bind:resume="resume" class="editor"/>
       <Preview v-bind:resume="resume" class="preview"/>
@@ -17,6 +17,7 @@ import Preview from "./components/Preview";
 export default {
   data() {
     return {
+      previewMode: false,
       resume: {
         profile: { name: "", city: "", birth: "" },
         workHistory: [{ company: "", content: "" }],
@@ -27,7 +28,11 @@ export default {
       }
     };
   },
-  name: "App",
+  methods: {
+    preview(){
+      this.previewMode = true
+    }
+  },
   components: {
     Topbar,
     Editor,
@@ -83,5 +88,15 @@ main {
     box-shadow: 0 0 3px hsla(0, 0, 0, 0.5);
     border-radius: 4px;
   }
+}
+.previewMode > #topbar{
+  display: none;
+}
+.previewMode > #editor{
+  display: none;
+}
+.previewMode > #preview{
+  max-width: 800px;
+  margin: 32px auto;
 }
 </style>

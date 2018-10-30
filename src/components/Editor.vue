@@ -58,7 +58,9 @@
           <li v-bind:class="{active: currentTab === 3}">
             <ArrayEditor v-bind:items="projects" v-bind:labels="{name: '项目名称', content: '工作内容'}" title="项目经历"/>
           </li>
-          <li v-bind:class="{active: currentTab === 4}">获奖情况</li>
+          <li v-bind:class="{active: currentTab === 4}">
+            <ArrayEditor v-bind:items="awards" title="获奖情况" v-bind:labels="{name: '获奖详情'}"/>
+          </li>
           <li v-bind:class="{active: currentTab === 5}">联系方式</li>
         </ol>
     </div>
@@ -83,7 +85,8 @@ export default {
       profile: { name: "", city: "", birth: "" },
       workHistory: [{ company: "", content: "" }],
       studyHistory: [{ school: "", duration: "", degree: "" }],
-      projects: [{ name: "", content: "" }]
+      projects: [{ name: "", content: "" }],
+      awards: [{ name: '' }]
     };
   },
   methods: {},

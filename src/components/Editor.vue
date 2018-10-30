@@ -50,12 +50,14 @@
             <ProfileEditor v-bind:profile="profile"/>
           </li>
           <li v-bind:class="{active: currentTab === 1}">
-            <WorkHistoryEditor v-bind:workHistory="workHistory"/>
+            <ArrayEditor v-bind:items="workHistory" v-bind:labels="{company: '公司', content: '工作内容'}"/>
           </li>
           <li v-bind:class="{active: currentTab === 2}">
-            <StudyHistoryEditor v-bind:items="items"/>
+            <ArrayEditor v-bind:items="studyHistory" v-bind:labels="{school: '学习', duration: '时间', degree: '学位'}"/>
           </li>
-          <li v-bind:class="{active: currentTab === 3}">项目经历</li>
+          <li v-bind:class="{active: currentTab === 3}">
+
+          </li>
           <li v-bind:class="{active: currentTab === 4}">获奖情况</li>
           <li v-bind:class="{active: currentTab === 5}">联系方式</li>
         </ol>
@@ -64,17 +66,17 @@
 
 <script>
 import ProfileEditor from './ProfileEditor'
-import WorkHistoryEditor from './WorkHistoryEditor'
-import StudyHistoryEditor from './StudyHistoryEditor'
+import ArrayEditor from './ArrayEditor'
 export default {
-  components: {ProfileEditor, WorkHistoryEditor, StudyHistoryEditor},
+  components: {ProfileEditor, ArrayEditor},
   data() {
     return {
       currentTab: 0,
       icons: [ "shenfenzheng", "iconset0190", "shu", "shoucang", "jiangbei", "weibiaoti-" ],
       profile: { name: "", city: "", birth: "" },
       workHistory: [{ company: "", content: "" }],
-      items: [{ school: "", duration: "", degree: "" }]
+      studyHistory: [{ school: "", duration: "", degree: "" }],
+      projects: [{ name: "", content: ""}]
     };
   },
   methods:{},

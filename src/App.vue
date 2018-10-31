@@ -70,7 +70,7 @@ html, body, #app {
   overflow: hidden;
 }
 
-#app.main {
+#app main {
   display: flex;
   flex: 1;
   background: #ddd;
@@ -80,7 +80,7 @@ html, body, #app {
     background: white;
     box-shadow: 0 0 3px hsla(0, 0, 0, 0.5);
     border-radius: 4px;
-    overflow: auto;
+    overflow: hidden;
   }
   > .preview {
     flex: 1;

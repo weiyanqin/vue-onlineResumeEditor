@@ -70,7 +70,7 @@ html, body, #app {
   overflow: hidden;
 }
 
-#app main {
+main {
   display: flex;
   flex: 1;
   background: #ddd;
@@ -93,7 +93,7 @@ html, body, #app {
 .previewMode > #topbar{
   display: none;
 }
-.previewMode > #editor{
+.previewMode  #editor{
   display: none;
 }
 .previewMode > #preview{

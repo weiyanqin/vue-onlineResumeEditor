@@ -1,6 +1,6 @@
 <template>
-  <div id="app" v-bind:class="{previewMode: previewMode}">
-    <Topbar class="topbar" v-on:preview="preview"/>
+  <div id="app" v-bind:class="{previewMode: previewMode,loginMode: loginMode}">
+    <Topbar class="topbar" v-on:preview="preview" v-on:login="login"/>
     <main>
       <Editor v-bind:resume="resume" class="editor"/>
       <Preview v-bind:resume="resume" class="preview"/>
@@ -18,6 +18,7 @@ export default {
   data() {
     return {
       previewMode: false,
+      loginMode: false,
       resume: {
         profile: { name: "", city: "", birth: "" },
         workHistory: [{ company: "", content: "" }],
@@ -34,6 +35,9 @@ export default {
     },
     preview(){
       this.previewMode = true
+    },
+    login(){
+      this.loginMode = true
     }
   },
   components: {
@@ -108,5 +112,8 @@ main {
   position: fixed;
   right: 16px;
   bottom: 16px;
+}
+.loginMode #topbar .login{
+  display: block;
 }
 </style>

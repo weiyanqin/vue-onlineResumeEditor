@@ -1,6 +1,6 @@
 <template>
-  <div id="app" v-bind:class="{previewMode: previewMode,loginMode: loginMode}">
-    <Topbar class="topbar" v-on:preview="preview" v-on:login="login"/>
+  <div id="app" v-bind:class="{previewMode: previewMode,loginMode: loginMode,signUpMode: signUpMode}">
+    <Topbar class="topbar" v-on:preview="preview" v-on:login="login" v-on:signUp="signUp"/>
     <main>
       <Editor v-bind:resume="resume" class="editor"/>
       <Preview v-bind:resume="resume" class="preview"/>
@@ -19,6 +19,7 @@ export default {
     return {
       previewMode: false,
       loginMode: false,
+      signUpMode: false,
       resume: {
         profile: { name: "", city: "", birth: "" },
         workHistory: [{ company: "", content: "" }],
@@ -30,26 +31,27 @@ export default {
     };
   },
   methods: {
-    exitPreview(){
-      this.previewMode = false
+    exitPreview() {
+      this.previewMode = false;
     },
-    preview(){
-      this.previewMode = true
+    preview() {
+      this.previewMode = true;
     },
-    login(){
-      this.loginMode = true
+    login() {
+      this.loginMode = true;
+    },
+    signUp() {
+      this.signUpMode = true;
     }
   },
-  components: {
-    Topbar,
-    Editor,
-    Preview
-  }
+  components: { Topbar, Editor, Preview }
 };
 </script>
 
 <style lang="scss">
-html, body, #app {
+html,
+body,
+#app {
   height: 100%;
   overflow: hidden;
 }
@@ -94,26 +96,29 @@ main {
     border-radius: 4px;
   }
 }
-.previewMode > #topbar{
+.previewMode > #topbar {
   display: none;
 }
-.previewMode  #editor{
+.previewMode #editor {
   display: none;
 }
-.previewMode > #preview{
+.previewMode > #preview {
   max-width: 800px;
   margin: 32px auto;
 }
-#exitPreview{
+#exitPreview {
   display: none;
 }
-.previewMode #exitPreview{
+.previewMode #exitPreview {
   display: inline-block;
   position: fixed;
   right: 16px;
   bottom: 16px;
 }
-.loginMode #topbar .login{
+.loginMode #topbar .login {
+  display: block;
+}
+.signUpMode #topbar .signUp {
   display: block;
 }
 </style>

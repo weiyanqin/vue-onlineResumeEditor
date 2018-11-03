@@ -4,7 +4,7 @@
             VueResumer
         </div>
         <div class="actions">
-            <el-button type="primary">注册</el-button>
+            <el-button type="primary" v-on:click="signUp">注册</el-button>
             <el-button v-on:click="login">登录</el-button>
             <el-button v-on:click="preview">预览</el-button>
         </div>
@@ -25,7 +25,7 @@
             </form>
             <div class="toSignUp">
                 '没有账户？'
-                <a href="#SignUp">注册</a>
+                <a href="#/SignUp">注册</a>
             </div>
         </div>
         <div class="signUp">
@@ -44,7 +44,7 @@
                     <input type="password" placeholder="确认密码">
                 </div>
                 <div class="row">
-                    <button type="submit" class="submit">登录</button>
+                    <button type="submit" class="submit">注册</button>
                 </div>
             </form>
             <div class="toLogin">
@@ -64,6 +64,9 @@ export default {
     },
     login(){
       this.$emit('login')
+    },
+    signUp(){
+        this.$emit('signUp')
     }
   }
 };

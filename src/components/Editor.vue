@@ -78,7 +78,12 @@
                 </el-form-item>
             </el-form>
           </li>
+
         </ol>
+        <div>
+            {{ count }}
+            <button v-on:click="add">test</button>
+        </div>
     </div>
 </template>
 
@@ -100,8 +105,16 @@ export default {
       // contacts: {qq: '', wechat: '', phone: '', email: ''}
     };
   },
-  methods: {},
-  created() {}
+  computed: {
+    count(){
+      return this.$store.state.count
+    }
+  },
+  methods: {
+    add(){
+      this.$store.commit('increment')
+    }
+  }
 };
 </script>
 

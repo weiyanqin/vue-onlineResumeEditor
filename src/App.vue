@@ -14,7 +14,10 @@ import Topbar from "./components/Topbar";
 import Editor from "./components/Editor";
 import Preview from "./components/Preview";
 
+import store from './store/index'
+
 export default {
+  name: 'app',
   data() {
     return {
       previewMode: false,
@@ -28,8 +31,9 @@ export default {
         awards: [{ name: "" }],
         contacts: { qq: "", wechat: "", phone: "", email: "" }
       }
-    };
+    }
   },
+  store,
   methods: {
     exitPreview() {
       this.previewMode = false;

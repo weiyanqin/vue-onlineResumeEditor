@@ -7,7 +7,7 @@
             <!-- <el-button type="primary" v-on:click="signUp">注册</el-button> -->
             <a class="button primary" href="#" @click.prevent="signUpDialogVisible = true">注册</a>
             <MyDialog title="注册" :visible="signUpDialogVisible" @close="signUpDialogVisible = false">
-            我就是 slot 内容
+                <SignUpForm @success="login($event)"/>
             </MyDialog>
             <el-button v-on:click="login">登录</el-button>
             <el-button v-on:click="login">保存</el-button>
@@ -63,6 +63,7 @@
 
 <script>
 import MyDialog from './MyDialog'
+import SignUpForm from './SignUpForm'
 
 export default {
   methods: {
@@ -74,13 +75,22 @@ export default {
     },
     signUp(){
         this.$emit('signUp')
+    },
+    login(user){
+      this.signUpDialogVisible = false
+      this.$store.commit('setUser', user)
     }
   },
-  components: { MyDialog },
+  components: { MyDialog, SignUpForm},
   data(){
       return {
         signUpDialogVisible: false
       }
+  },
+  computed:{
+    user(){
+      return this.$store.state.user
+    }
   }
 };
 </script>

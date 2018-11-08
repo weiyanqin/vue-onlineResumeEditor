@@ -6,6 +6,10 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     active: 'profile',
+    user: {
+      id: '',
+      username: ''
+    },
     resume: {
         profile: { name: "", city: "", birth: "" },
         workHistory: [{ company: "", content: "" }],
@@ -16,7 +20,7 @@ export default new Vuex.Store({
     }
   },
   mutations: {
-    
+
     initState(state, payload){
      Object.assign(state, payload)
     },
@@ -27,6 +31,10 @@ export default new Vuex.Store({
     updateResume(state, {path, value}){
       objectPath.set(state.resume, path, value)
       localStorage.setItem('state', JSON.stringify(state))
+    },
+    setUser(state, payload){
+      Object.assign(state.user, payload)
+      console.log(state.user)
     }
   }
 

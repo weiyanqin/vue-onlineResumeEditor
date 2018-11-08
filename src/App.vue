@@ -16,6 +16,9 @@ import Preview from "./components/Preview";
 
 import store from './store/index'
 
+import AV from './lib/leancloud'
+import getAVUser from './lib/getAVUser'
+
 export default {
   name: 'app',
   data() {
@@ -23,14 +26,6 @@ export default {
       previewMode: false,
       loginMode: false,
       signUpMode: false,
-      // resume: {
-      //   profile: { name: "", city: "", birth: "" },
-      //   workHistory: [{ company: "", content: "" }],
-      //   studyHistory: [{ school: "", duration: "", degree: "" }],
-      //   projects: [{ name: "", content: "" }],
-      //   awards: [{ name: "" }],
-      //   contacts: { qq: "", wechat: "", phone: "", email: "" }
-      // }
     }
   },
   store,
@@ -61,8 +56,9 @@ export default {
       state = JSON.parse(state) 
     }
     this.$store.commit('initState', state)
+    this.$store.commit('setUser', getAVUser())
   }
-  
+
 };
 </script>
 

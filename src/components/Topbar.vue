@@ -4,11 +4,16 @@
             VueResumer
         </div>
         <div class="actions">
-            <el-button type="primary" v-on:click="signUp">注册</el-button>
+            <!-- <el-button type="primary" v-on:click="signUp">注册</el-button> -->
+            <a class="button primary" href="#" @click.prevent="signUpDialogVisible = true">注册</a>
+            <MyDialog title="注册" :visible="signUpDialogVisible" @close="signUpDialogVisible = false">
+            我就是 slot 内容
+            </MyDialog>
             <el-button v-on:click="login">登录</el-button>
+            <el-button v-on:click="login">保存</el-button>
             <el-button v-on:click="preview">预览</el-button>
         </div>
-        <div class="login">
+        <!-- <div class="login">
             <form class="form">
                 <h2>登录</h2>
                 <div class="row">
@@ -27,8 +32,8 @@
                 '没有账户？'
                 <a href="#/SignUp">注册</a>
             </div>
-        </div>
-        <div class="signUp">
+        </div> -->
+        <!-- <div class="signUp">
             <form class="form">
                 <h2>注册</h2>
                 <div class="row">
@@ -51,12 +56,14 @@
                 '已有账户？'
                 <a href="#/Login">登录</a>
             </div>
-        </div>
+        </div> -->
     </div>
 
 </template>
 
 <script>
+import MyDialog from './MyDialog'
+
 export default {
   methods: {
     preview() {
@@ -68,6 +75,12 @@ export default {
     signUp(){
         this.$emit('signUp')
     }
+  },
+  components: { MyDialog },
+  data(){
+      return {
+        signUpDialogVisible: false
+      }
   }
 };
 </script>
@@ -168,6 +181,20 @@ export default {
 #tobar .signUp .toLogin a {
   color: #cb4d4e;
   font-weight: 700;
+}
+.button{
+  width:72px;
+  height:32px;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  background:#ddd;
+  color: #222;
+  text-decoration: none;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  vertical-align: middle;
 }
 </style> 
 

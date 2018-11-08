@@ -5,11 +5,23 @@
         </div>
         <div class="actions">
             <!-- <el-button type="primary" v-on:click="signUp">注册</el-button> -->
-            <a class="button primary" href="#" @click.prevent="signUpDialogVisible = true">注册</a>
+            <!-- <a class="button primary" href="#" @click.prevent="signUpDialogVisible = true">注册</a>
             <MyDialog title="注册" :visible="signUpDialogVisible" @close="signUpDialogVisible = false">
                 <SignUpForm @success="login($event)"/>
             </MyDialog>
-            <el-button v-on:click="login">登录</el-button>
+            <el-button v-on:click="login">登录</el-button> -->
+
+            <div v-if="logined" class="userActions">
+              <span>你好，{{user.username}}</span>
+              <a class="button" href="#" @click.prevent="signOut">登出</a>
+            </div>
+            <div v-else class="userActions">
+              <a class="button primary" href="#" @click.prevent="signUpDialogVisible = true">注册</a>
+              <MyDialog title="注册" :visible="signUpDialogVisible" @close="signUpDialogVisible = false">
+                <SignUpForm @success="signIn($event)"/>
+              </MyDialog>
+              <a class="button" href="#">登录</a>
+            </div>
             <el-button v-on:click="login">保存</el-button>
             <el-button v-on:click="preview">预览</el-button>
         </div>
@@ -62,34 +74,43 @@
 </template>
 
 <script>
-import MyDialog from './MyDialog'
-import SignUpForm from './SignUpForm'
+import MyDialog from "./MyDialog";
+import SignUpForm from "./SignUpForm";
+import AV from '../lib/leancloud'
 
 export default {
+  name: 'Topbar',
   methods: {
     preview() {
       this.$emit("preview");
     },
-    login(){
-      this.$emit('login')
+    login() {
+      this.$emit("login");
     },
-    signUp(){
-        this.$emit('signUp')
+    signUp() {
+      this.$emit("signUp");
     },
-    login(user){
-      this.signUpDialogVisible = false
-      this.$store.commit('setUser', user)
+    signOut(){
+      AV.User.logOut()
+      this.$store.commit('removeUser')
+    },
+    signIn(user) {
+      this.signUpDialogVisible = false;
+      this.$store.commit("setUser", user);
     }
   },
-  components: { MyDialog, SignUpForm},
-  data(){
-      return {
-        signUpDialogVisible: false
-      }
+  components: { MyDialog, SignUpForm },
+  data() {
+    return {
+      signUpDialogVisible: false
+    };
   },
-  computed:{
-    user(){
-      return this.$store.state.user
+  computed: {
+    user() {
+      return this.$store.state.user;
+    },
+    logined(){
+      return this.user.id
     }
   }
 };
@@ -192,13 +213,13 @@ export default {
   color: #cb4d4e;
   font-weight: 700;
 }
-.button{
-  width:72px;
-  height:32px;
+.button {
+  width: 72px;
+  height: 32px;
   border: none;
   cursor: pointer;
   font-size: 18px;
-  background:#ddd;
+  background: #ddd;
   color: #222;
   text-decoration: none;
   display: inline-flex;

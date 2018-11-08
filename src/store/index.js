@@ -5,7 +5,7 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    count: 0,
+    active: 'profile',
     resume: {
         profile: { name: "", city: "", birth: "" },
         workHistory: [{ company: "", content: "" }],
@@ -16,8 +16,8 @@ export default new Vuex.Store({
     }
   },
   mutations: {
-    increment (state) {
-      state.count++
-    }
+    switchTab (state, payload){
+        state.selected = payload // 关于 payload 看这里 http://vuex.vuejs.org/zh-cn/mutations.html#提交载荷（payload）
+      }
   }
 })

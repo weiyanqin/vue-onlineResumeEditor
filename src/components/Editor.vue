@@ -80,10 +80,6 @@
           </li>
 
         </ol>
-        <div>
-            {{ count }}
-            <button v-on:click="add">test</button>
-        </div>
     </div>
 </template>
 
@@ -100,17 +96,21 @@ export default {
     }
   },
   computed: {
-    count (){
-      return this.$store.state.count
-    },
     resume (){
       return this.$store.state.resume
-    } 
+    },
+    
+  },
+  active:{
+    get(){
+      return this.$store.state.active
+    },
+    set(value){
+      return this.$store.commit('switchTab', value)
+    }
   },
   methods: {
-    add (){
-      this.$store.commit('increment')
-    }
+
   }
 };
 </script>

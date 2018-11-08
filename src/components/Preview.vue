@@ -25,13 +25,18 @@
 </template>
 
 <style>
-#preview {
-}
+/* #preview {
+} */
 </style>
 
 <script>
 export default {
-    props: ['resume'],
+    // props: ['resume'],
+    computed: {
+        resume (){
+            return this.$store.state.resume
+        }
+    },
     methods: {
         filter(array){
             return array.filter(item=> !this.isEmpty(item))
@@ -46,6 +51,7 @@ export default {
             }
             return empty
         }
-    }
+    },
+
 }
 </script>

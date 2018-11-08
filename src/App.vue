@@ -23,14 +23,14 @@ export default {
       previewMode: false,
       loginMode: false,
       signUpMode: false,
-      resume: {
-        profile: { name: "", city: "", birth: "" },
-        workHistory: [{ company: "", content: "" }],
-        studyHistory: [{ school: "", duration: "", degree: "" }],
-        projects: [{ name: "", content: "" }],
-        awards: [{ name: "" }],
-        contacts: { qq: "", wechat: "", phone: "", email: "" }
-      }
+      // resume: {
+      //   profile: { name: "", city: "", birth: "" },
+      //   workHistory: [{ company: "", content: "" }],
+      //   studyHistory: [{ school: "", duration: "", degree: "" }],
+      //   projects: [{ name: "", content: "" }],
+      //   awards: [{ name: "" }],
+      //   contacts: { qq: "", wechat: "", phone: "", email: "" }
+      // }
     }
   },
   store,
@@ -47,6 +47,11 @@ export default {
     signUp() {
       this.signUpMode = true;
     }
+  },
+  computed: {
+    resume (){
+      return this.$store.state.resume
+    } 
   },
   components: { Topbar, Editor, Preview }
 };

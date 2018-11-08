@@ -92,26 +92,23 @@ import ProfileEditor from "./ProfileEditor";
 import ArrayEditor from "./ArrayEditor";
 export default {
   components: { ProfileEditor, ArrayEditor },
-  props: ['resume'],
+  // props: ['resume'],
   data() {
     return {
       currentTab: 0,
       icons: [ "shenfenzheng", "iconset0190", "shu", "shoucang", "jiangbei", "weibiaoti-" ],
-      // profile: { name: "", city: "", birth: "" },
-      // workHistory: [{ company: "", content: "" }],
-      // studyHistory: [{ school: "", duration: "", degree: "" }],
-      // projects: [{ name: "", content: "" }],
-      // awards: [{ name: '' }],
-      // contacts: {qq: '', wechat: '', phone: '', email: ''}
-    };
-  },
-  computed: {
-    count(){
-      return this.$store.state.count
     }
   },
+  computed: {
+    count (){
+      return this.$store.state.count
+    },
+    resume (){
+      return this.$store.state.resume
+    } 
+  },
   methods: {
-    add(){
+    add (){
       this.$store.commit('increment')
     }
   }

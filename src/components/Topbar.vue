@@ -17,18 +17,25 @@
             </div>
             <div v-else class="userActions">
               <a class="button primary" href="#" @click.prevent="signUpDialogVisible = true">注册</a>
-              <MyDialog title="注册" :visible="signUpDialogVisible" @close="signUpDialogVisible = false">
+              <!-- <MyDialog title="注册" :visible="signUpDialogVisible" @close="signUpDialogVisible = false">
                 <SignUpForm @success="signIn($event)"/>
-              </MyDialog>
+              </MyDialog> -->
             <a class="button" href="#" @click.prevent="signInDialogVisible = true">登录</a>
-            <MyDialog title="登录" :visible="signInDialogVisible"
+            <!-- <MyDialog title="登录" :visible="signInDialogVisible"
               @close="signInDialogVisible = false">
               <SignInForm />
-            </MyDialog>
+            </MyDialog> -->
             </div>
             <el-button v-on:click="login">保存</el-button>
             <el-button v-on:click="preview">预览</el-button>
         </div>
+        <MyDialog title="注册" :visible="signUpDialogVisible" @close="signUpDialogVisible = false">
+          <SignUpForm @success="signIn($event)"/>
+        </MyDialog>
+        <MyDialog title="登录" :visible="signInDialogVisible"
+          @close="signInDialogVisible = false">
+          <SignInForm />
+        </MyDialog>
         <!-- <div class="login">
             <form class="form">
                 <h2>登录</h2>

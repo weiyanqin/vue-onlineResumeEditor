@@ -4,27 +4,13 @@
             VueResumer
         </div>
         <div class="actions">
-            <!-- <el-button type="primary" v-on:click="signUp">注册</el-button> -->
-            <!-- <a class="button primary" href="#" @click.prevent="signUpDialogVisible = true">注册</a>
-            <MyDialog title="注册" :visible="signUpDialogVisible" @close="signUpDialogVisible = false">
-                <SignUpForm @success="login($event)"/>
-            </MyDialog>
-            <el-button v-on:click="login">登录</el-button> -->
-
             <div v-if="logined" class="userActions">
               <span class="welcome">你好，{{user.username}}</span>
               <a class="button" href="#" @click.prevent="signOut">登出</a>
             </div>
             <div v-else class="userActions">
               <a class="button primary" href="#" @click.prevent="signUpDialogVisible = true">注册</a>
-              <!-- <MyDialog title="注册" :visible="signUpDialogVisible" @close="signUpDialogVisible = false">
-                <SignUpForm @success="signIn($event)"/>
-              </MyDialog> -->
-            <a class="button" href="#" @click.prevent="signInDialogVisible = true">登录</a>
-            <!-- <MyDialog title="登录" :visible="signInDialogVisible"
-              @close="signInDialogVisible = false">
-              <SignInForm />
-            </MyDialog> -->
+              <a class="button" href="#" @click.prevent="signInDialogVisible = true">登录</a>
             </div>
             <el-button v-on:click="login">保存</el-button>
             <el-button v-on:click="preview">预览</el-button>
@@ -36,50 +22,6 @@
           @close="signInDialogVisible = false">
           <SignInForm @success="signIn($event)"/>
         </MyDialog>
-        <!-- <div class="login">
-            <form class="form">
-                <h2>登录</h2>
-                <div class="row">
-                    <label>邮箱</label>
-                    <input type="email" placeholder= "example@163.com">
-                </div>
-                <div class="row">
-                    <label>密码</label>
-                    <input type="password" placeholder="请输入密码">
-                </div>
-                <div class="row">
-                    <button type="submit" class="submit">登录</button>
-                </div>
-            </form>
-            <div class="toSignUp">
-                '没有账户？'
-                <a href="#/SignUp">注册</a>
-            </div>
-        </div> -->
-        <!-- <div class="signUp">
-            <form class="form">
-                <h2>注册</h2>
-                <div class="row">
-                    <label>邮箱</label>
-                    <input type="email" placeholder= "example@163.com">
-                </div>
-                <div class="row">
-                    <label>密码</label>
-                    <input type="password" placeholder="请输入密码">
-                </div>
-                <div class="row">
-                    <label>确认密码</label>
-                    <input type="password" placeholder="确认密码">
-                </div>
-                <div class="row">
-                    <button type="submit" class="submit">注册</button>
-                </div>
-            </form>
-            <div class="toLogin">
-                '已有账户？'
-                <a href="#/Login">登录</a>
-            </div>
-        </div> -->
     </div>
 
 </template>

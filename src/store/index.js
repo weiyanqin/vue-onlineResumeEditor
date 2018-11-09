@@ -16,7 +16,7 @@ export default new Vuex.Store({
         studyHistory: [{ school: "", duration: "", degree: "" }],
         projects: [{ name: "", content: "" }],
         awards: [{ name: "" }],
-        contacts: { qq: "", wechat: "", phone: "", email: "" }
+        contacts: [{ qq: "", wechat: "", phone: "", email: "" }]
     }
   },
   mutations: {

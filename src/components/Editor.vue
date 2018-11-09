@@ -8,40 +8,6 @@
                     </svg>
                 </li>
             </ol>
-
-            <!-- <ol>
-              <li v-bind:class="{active: currentTab === 0}" v-on:click="currentTab = 0">
-                  <svg class="icon" aria-hidden="">
-                    <use xlink:href="#icon-shenfenzheng"></use>
-                  </svg>
-              </li>
-              <li v-bind:class="{active: currentTab === 1}" v-on:click="currentTab = 1">
-                  <svg class="icon" aria-hidden="">
-                    <use xlink:href="#icon-iconset0190"></use>
-                  </svg>
-              </li>             
-              <li v-bind:class="{active: currentTab === 2}" v-on:click="currentTab = 2">
-                  <svg class="icon" aria-hidden="">
-                    <use xlink:href="#icon-shu"></use>
-                  </svg>
-              </li>             
-              <li v-bind:class="{active: currentTab === 3}" v-on:click="currentTab = 3">
-                  <svg class="icon" aria-hidden="">
-                    <use xlink:href="#icon-shoucang"></use>
-                  </svg>
-              </li>             
-              <li v-bind:class="{active: currentTab === 4}" v-on:click="currentTab = 4">
-                  <svg class="icon" aria-hidden="">
-                    <use xlink:href="#icon-jiangbei"></use>
-                  </svg>
-              </li>             
-              <li v-bind:class="{active: currentTab === 5}" v-on:click="currentTab = 5">
-                  <svg class="icon" aria-hidden="">
-                    <use xlink:href="#icon-weibiaoti-"></use>
-                  </svg>
-              </li>
-            </ol> -->
-
         </nav>
 
         <ol class="panes">
@@ -61,6 +27,9 @@
           <li v-bind:class="{active: currentTab === 4}">
             <ArrayEditor v-bind:items="resume.awards" title="获奖情况" v-bind:labels="{name: '获奖详情'}"/>
           </li>
+          <!-- <li v-bind:class="{active: currentTab === 5}">
+            <ArrayEditor v-bind:items="resume.contacts" v-bind:labels="{qq: 'QQ',wechat: "", phone: "", email: ""}" title="联系方式"/>
+          </li> -->
           <li v-bind:class="{active: currentTab === 5}">
             <h2>联系方式</h2>
             <el-form>
@@ -88,7 +57,6 @@ import ProfileEditor from "./ProfileEditor";
 import ArrayEditor from "./ArrayEditor";
 export default {
   components: { ProfileEditor, ArrayEditor },
-  // props: ['resume'],
   data() {
     return {
       currentTab: 0,
